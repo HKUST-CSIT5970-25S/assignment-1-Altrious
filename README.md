@@ -47,6 +47,7 @@
     | `m5.large` - `t3.medium`  | 2340           | 0.686    |
 
     > Region: US East (N. Virginia). Use `Ubuntu Server 22.04 LTS (HVM)` as AMI. Note: Use private IP address when using iPerf within the same region. You'll need iPerf for measuring TCP bandwidth and Ping for measuring Round-Trip time.
+
     > From the table we can know that the TCP bandwidth and the RTT performance seems are both limited by the instance with worse network performance between the two instances that are connecting. For m5.large and c5n.large, the different between the performance of network on same type or between each other seems small. But for t3.medium, the performance of connecting to the different type is obviously worse than the performance of connecting to the same type.
 
 2. (1 mark) What about the network performance for instances deployed in different regions? In order to answer this question, you need to complete the following table.
@@ -58,5 +59,7 @@
     | Oregon - Oregon           | 4470           | 0.179    |
 
     > Region: US East (N. Virginia), US West (Oregon). Use `Ubuntu Server 22.04 LTS (HVM)` as AMI. All instances are `c5.large`. Note: Use public IP address when using iPerf within the same region.
+
     > The performance between different regions are much worse than the performance between a same region.
+
     > I think the network performance can't be consistent over time, at least for TCP it can't be consistent over time. For the time when most of the people are using the internet, the increasing packets passing in the internet will increase the loss rate. The more loss rate will cause TCP to decrease the window size, and causing the bandwidth and RTT to performances worse. While during the time when most of people do not use the internet, the window size will be greater and allow bigger bandwidth and will also have a lower RTT since there are not that much packets in the internet.
